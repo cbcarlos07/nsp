@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'oracle'),
 
     /*
     |--------------------------------------------------------------------------
@@ -77,6 +77,27 @@ return [
             'prefix' => '',
             'schema' => 'public',
         ],
+
+        'oracle' => [
+            'driver' => 'oracle',
+            'host' => env('DB_HOST', ''),
+            'port' => env('DB_PORT', ''),
+            'database' => env('DB_DATABASE', ''),
+            'username' => env('DB_USERNAME', ''),
+            'password' => env('DB_USERNAME', ''),
+            'prefix' => '',
+        ],
+
+        'oracle1' => [
+            'driver' => 'oracle',
+            'host' => env('DB_HOST', ''),
+            'port' => env('DB_PORT', ''),
+            'database' => env('DB_DATABASE1', ''),
+            'username' => env('DB_USERNAME1', ''),
+            'password' => env('DB_USERNAME1', ''),
+            'prefix' => ''
+        ]
+
 
     ],
 

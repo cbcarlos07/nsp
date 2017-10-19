@@ -11,11 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/', function () {
     return view('login');
 });
 
+Route::get('/', 'UsuarioController@login');
+
+Route::post('/principal', 'UsuarioController@logar');
+Route::get('/cadastro', 'NotificacaoController@cadastro');
+Route::post('/busca', 'NotificacaoController@busca');
+Route::get('/inicio', 'NotificacaoController@principal');
+Route::post('/insert', 'NotificacaoController@cadNotivisa');
