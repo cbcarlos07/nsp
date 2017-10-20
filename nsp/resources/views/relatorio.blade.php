@@ -61,9 +61,7 @@
         });
         $.datetimepicker.setLocale('pt-BR')
 
-        $(document).ready( function () {
-            $('#codigo').focus();
-        } );
+
         $('.btn-pesq').on('click', function () {
             var inicio = $('#inicio').val();
             var fim    = $('#final').val();
@@ -114,7 +112,7 @@
                                      "   <td> <a href='#' onclick='abrirLink( "+ j.cod_registro +" )' data-id='"+j.cod_registro+"' title='Visualizar relat&oacute;rio'><i class='glyphicon glyphicon-search' style='text-align: center'></i></a></td>"+
                                      "</tr>";
                         } );
-                    
+
 
 
 
@@ -168,14 +166,7 @@
 
         });
 
-        $('#codigo').on('keypress', function (e) {
-            if( e.keyCode == 13 ){
-                e.preventDefault();
-                $('.btn-pesq').click();
-            }
-        });
-
-
+        $
 
         $('#inicio').on('change', function () {
             console.log('inicio: '+$(this).val() );
@@ -267,69 +258,7 @@
 
         }
 
-        $('.btn-save').on('click', function () {
-            salvarNotivisa();
-        });
-        
-        function salvarNotivisa() {
 
-            var ocorencia = $('#codigo').val();
-            var notivisa  = $('#notivisa').val();
-            var anvisa    = $('#anvisa').val();
-            var token     = $('#token').val();
-            var acao      = "./insert";
-            if( validarCampos() ){
-
-                if( anvisa > 0 ){
-                    acao = './update';
-                }
-
-                $.ajax({
-                    url  : acao,
-                    type : 'post',
-                    dataType : 'json',
-                    data : {
-                        notivisa : notivisa,
-                        codigo   : ocorencia,
-                        _token   : token,
-                        id       : anvisa
-                    },
-                    success : function (data) {
-                      //  console.log("Response: "+data.success);
-                        if( data.success ){
-                            $('#anvisa').val( data.id );
-                            successMsg();
-                        }else{
-                            errorMsg( 'Ocorreu um problema ao realizar operação' );
-                        }
-                    }
-
-                });
-
-
-            }else{
-                errorMsg('Os campo(s) destacado(s) precisa(m) ser preenchido(s)');
-            }
-        }
-
-        function errorMsg( msg ) {
-            var alerta = $('.alerta');
-            alerta.addClass( 'alert-danger' );
-            alerta.empty().html('<strong>Opa!</strong> '+msg)
-            alerta.animate({"right":"280px"}, "slow");
-            setTimeout(function () {
-                alerta.animate({"right":"-500px"}, "slow");
-            },3000);
-        }
-
-        function successMsg() {
-            var alerta = $('.alerta');
-            alerta.empty().html('<strong>Parab&ecirc;ns!</strong> Opera&ccedil;&atilde;o realizada com sucesso!');
-            alerta.animate({"right":"280px"}, "slow");
-            setTimeout(function () {
-                alerta.animate({"right":"-500px"}, "slow");
-            },3000);
-        }
     </script>
 
 
