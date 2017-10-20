@@ -4,6 +4,7 @@
       <link rel="stylesheet" href={{ URL('theme/bower_components/bootstrap/dist/css/bootstrap.min.css') }}>
       <!-- Font Awesome -->
       <link rel="stylesheet" href={{ URL('theme/bower_components/font-awesome/css/font-awesome.min.css') }}>
+      <link rel="stylesheet" href="{{ URL('css/jquery.datetimepicker.min.css') }}" type="text/css" >
 
   </head>
   <body>
@@ -14,7 +15,7 @@
           </div>
           <ul class="nav navbar-nav">
               <li><a href="{{ action('NotificacaoController@cadastro') }}">Cadastro</a></li>
-              <li><a href="#">Relat&oacute;rio</a></li>
+              <li><a href="{{ action('NotificacaoController@relatorio') }}">Relat&oacute;rio</a></li>
           </ul>
       </div>
   </nav>
@@ -57,5 +58,6 @@
           });
       });
   </script>
+
   </body>
 </html>

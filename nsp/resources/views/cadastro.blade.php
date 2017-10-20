@@ -55,7 +55,9 @@
             var div = $('.tabela');
             var lnk = $('#reset');
             var campoNotivisa = $('#notivisa');
+            var campoAnvisa = $('#anvisa');
             campoNotivisa.val('');
+            campoAnvisa.val( 0 );
             div.empty();
             $.ajax({
                 url  : './busca',
@@ -66,11 +68,13 @@
                     _token : token
                 },
                 success: function ( data ) {
-                    console.log( data );
+                  //  console.log( data );
                     lnk.text('Reiniciar pesquisa');
 
                     lnk.fadeIn();
-                    if( data.length > 0 ){
+                   // console.log("Length: "+data[0].length);
+                    if( data[0].length > 0 ){
+                       // console.log( data[0][0]['tipo_de_ocorrencia']  );
                         //console.log('Maior que zero');
                         $('input[id="notivisa"]').removeAttr( 'disabled' );
 
@@ -81,59 +85,64 @@
                                     '   <div class="form-group ">'+
                                     '      <label for="cdos" class="col-md-2 control-label">Tipo de Ocorr&ecirc;ncia</label>'+
                                     '      <div class="col-md-9"> '+
-                                    '         <input type="text" class="form-control" id="cdos" placeholder="C&oacute;d" disabled value="'+ data[0]['tipo_de_ocorrencia'] +'">'+
+                                    '         <input type="text" class="form-control" id="cdos" placeholder="C&oacute;d" disabled value="'+ data[0][0]['tipo_de_ocorrencia'] +'">'+
                                     '      </div>'+
                                     '   </div>'+
                                     '   <div class="form-group ">'+
                                     '      <label for="cdos" class="col-md-2 control-label">Ocorr&ecirc;ncia </label>'+
                                     '      <div class="col-md-9"> '+
-                                    '         <input type="text" class="form-control" id="cdos" placeholder="C&oacute;d" disabled value="'+ data[0]['ocorrencia'] +'">'+
+                                    '         <input type="text" class="form-control" id="cdos" placeholder="C&oacute;d" disabled value="'+ data[0][0]['ocorrencia'] +'">'+
                                     '      </div>'+
                                     '   </div>'+
                                     '   <div class="form-group ">'+
                                     '      <label for="cdos" class="col-md-2 control-label">Resumo</label>'+
                                     '      <div class="col-md-9"> '+
-                                    '        <input type="text" class="form-control" id="cdos" placeholder="C&oacute;d" disabled value="'+ data[0]['resumo'] +'">'+
+                                    '        <input type="text" class="form-control" id="cdos" placeholder="C&oacute;d" disabled value="'+ data[0][0]['resumo'] +'">'+
                                     '      </div>'+
                                     '   </div>'+
                                     '   <div class="form-group ">'+
                                     '      <label for="cdos" class="col-md-2 control-label">Data da Ocorr&ecirc;ncia </label>'+
                                     '      <div class="col-md-9"> '+
-                                    '         <input type="text" class="form-control" id="cdos" placeholder="C&oacute;d" disabled value="'+ data[0]['data_ocorrencia'] +'">'+
+                                    '         <input type="text" class="form-control" id="cdos" placeholder="C&oacute;d" disabled value="'+ data[0][0]['data_ocorrencia'] +'">'+
                                     '      </div>'+
                                     '   </div>'+
                                     '   <div class="form-group ">'+
                                     '       <label for="cdos" class="col-md-2 control-label">Setor registrante</label>'+
                                     '       <div class="col-md-9"> '+
-                                    '          <input type="text" class="form-control" id="cdos" placeholder="C&oacute;d" disabled value="'+ data[0]['setor_registrante'] +'">'+
+                                    '          <input type="text" class="form-control" id="cdos" placeholder="C&oacute;d" disabled value="'+ data[0][0]['setor_registrante'] +'">'+
                                     '       </div>'+
                                     '    </div>'+
                                     '    <div class="form-group ">'+
                                     '    <label for="cdos" class="col-md-2 control-label">Setor de Ocorr&ecirc;ncia </label>'+
                                     '      <div class="col-md-9"> '+
-                                    '        <input type="text" class="form-control" id="cdos" placeholder="C&oacute;d" disabled value="'+ data[0]['setor_ocorrencia'] +'">'+
+                                    '        <input type="text" class="form-control" id="cdos" placeholder="C&oacute;d" disabled value="'+ data[0][0]['setor_ocorrencia'] +'">'+
                                     '      </div>'+
                                     '    </div>'+
                                     '    <div class="form-group ">'+
                                     '       <label for="cdos" class="col-md-2 control-label">Registrante</label>'+
                                     '       <div class="col-md-9"> '+
-                                    '         <input type="text" class="form-control" id="cdos" placeholder="C&oacute;d" disabled value="'+ data[0]['registrante'] +'">'+
+                                    '         <input type="text" class="form-control" id="cdos" placeholder="C&oacute;d" disabled value="'+ data[0][0]['registrante'] +'">'+
                                     '       </div>'+
                                     '    </div>'+
                                     ' </div>'+
                                     '</div>';
-                                    $('#notivisa').val( data[0]['cd_notivisa'] );
-                                    $('#anvisa').val( data[0]['cd_ocorrencia_anvisa'] );
+                                    //console.log("Cd Notivisa: ", data[data.length -1]['notificacao']);
+                                    var cdNotivisa = "";
+                                    var cdAnvisa = 0;
+                                    try{
+                                    //    console.log( "Cd Notivisa: ", data['notificacao'][0]['cd_notivisa'] );
+                                        cdNotivisa =  data['notificacao'][0]['cd_notivisa'];
+                                        cdAnvisa = data['notificacao'][0]['cd_ocorrencia_anvisa'];
+                                        campoAnvisa.val( cdAnvisa );
+                                        campoNotivisa.val( cdNotivisa );
+
+                                    }catch (err){}
+
+
 
                         div.append( linha );
                         div.fadeIn();
 
-                        if( data[0]['cd_notivisa'] != null ){
-                            $('#notivisa').removeAttr( 'disabled' );
-                            $('.btn-save').removeAttr( 'disabled' );
-                        }else{
-                            $('.btn-save').attr( 'disabled', true );
-                        }
 
                     }else{
                        // console.log('menor que zero');
@@ -220,7 +229,7 @@
 
 
             if( ($('#codigo').val() == "") || $('#notivisa').val() == "" ){
-                teste = false;
+            //   console.log('Botao salvar inativo');
                 if( $('#codigo').val() == "" ) {
                     $('.btn-save').attr('disabled', true);
                 }
@@ -229,6 +238,7 @@
                     $('.btn-save').attr('disabled', true);
                 }
             }else{
+               // console.log('Botao salvar ativo');
                 $('.btn-save').removeAttr('disabled');
             }
 
@@ -248,7 +258,7 @@
             if( validarCampos() ){
 
                 if( anvisa > 0 ){
-                    acao = "./update";
+                    acao = './update';
                 }
 
                 $.ajax({
@@ -258,12 +268,13 @@
                     data : {
                         notivisa : notivisa,
                         codigo   : ocorencia,
-                        _token   : token
+                        _token   : token,
+                        id       : anvisa
                     },
                     success : function (data) {
                       //  console.log("Response: "+data.success);
                         if( data.success ){
-                            $('#anvisa').va( data.id );
+                            $('#anvisa').val( data.id );
                             successMsg();
                         }else{
                             errorMsg( 'Ocorreu um problema ao realizar operação' );

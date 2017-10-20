@@ -11,7 +11,6 @@ class HamOcorrenciasAnvisa extends Model
     protected $primaryKey = 'CD_OCORRENCIA_ANVISA';
     public $incrementing = false;
     /*protected $fillable = ['CD_REGISTRO_OCORRENCIA', 'CD_NOTIVISA'];*/
+  //  protected  $fillable = [];
     public $sequence = 'SEQ_OCORRENCIA_ANVISA';
-
-
 }
