@@ -116,4 +116,10 @@ class NotificacaoController extends Controller
 
         return response()->json( $dados );
     }
+
+    public function beforeExit(){
+        return view('sair');
+    }
+
+
 }

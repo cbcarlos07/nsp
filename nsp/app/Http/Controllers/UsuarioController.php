@@ -6,8 +6,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Request;
 use Validator;
+
 class UsuarioController extends Controller
 {
     public function logar(){
@@ -42,7 +44,9 @@ class UsuarioController extends Controller
         }
 
         if( $senha == $pass ){
-            return view('opcao');
+            Session::put('usuario', $login );
+            return redirect(  )->action( 'NotificacaoController@principal' );
+
         }else{
             return view('/login')->with('pwd','0');
         }
@@ -54,6 +58,11 @@ class UsuarioController extends Controller
         return view('login');
     }
 
+    public function sair(){
+        Session::flush();
+        return redirect(  )->action( 'UsuarioController@login' );
+
+    }
 
 
 

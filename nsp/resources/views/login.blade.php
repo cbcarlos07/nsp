@@ -51,7 +51,7 @@
             </div>
         @endif
 
-        <form action="./principal" method="post">
+        <form action="./logar" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" placeholder="Usuário" name="login">

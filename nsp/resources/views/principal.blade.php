@@ -16,6 +16,12 @@
           <ul class="nav navbar-nav">
               <li><a href="{{ action('NotificacaoController@cadastro') }}">Cadastro</a></li>
               <li><a href="{{ action('NotificacaoController@relatorio') }}">Relat&oacute;rio</a></li>
+              <li><a href="#" style="text-decoration: none"><span class="saudacao"></span><b>{{ Session::get('usuario') }}</b>!</a></li>
+
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li><a href="{{ action('NotificacaoController@beforeExit') }}">Sair</a></li>
+
           </ul>
       </div>
   </nav>
@@ -56,7 +62,35 @@
                   $(this).addClass('active');
               }
           });
+
+          atualizarSaudacao();
+
+          setTimeout(function () {
+              atualizarSaudacao()
+          }, 30000);
       });
+
+
+      function atualizarSaudacao() {
+          var data = new Date();
+          var hora = data.getHours();
+
+          var msg = "";
+          if( hora > 0 && hora < 12 ){
+              msg = "Bom dia, ";
+          }else
+          if( hora >= 12 ){
+              msg = "Boa tarde, ";
+          }else if( hora > 18 ){
+              msg = "Boa noite, ";
+          }
+
+          $('span.saudacao').text( msg );
+
+      }
+
+
+
   </script>
 
   </body>

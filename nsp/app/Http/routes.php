@@ -18,11 +18,13 @@ Route::get('/', function () {
 
 Route::get('/', 'UsuarioController@login');
 
-Route::post('/principal', 'UsuarioController@logar');
+Route::post('/logar', 'UsuarioController@logar');
 Route::get('/cadastro', 'NotificacaoController@cadastro');
 Route::post('/busca', 'NotificacaoController@busca');
-Route::get('/inicio', 'NotificacaoController@principal');
+Route::get('/principal', 'NotificacaoController@principal');
 Route::post('/insert', 'NotificacaoController@cadNotivisa');
 Route::post('/update/', 'NotificacaoController@altNotivisa');
 Route::get('/relatorio', 'NotificacaoController@relatorio');
 Route::post('/consulta', 'NotificacaoController@consulta');
+Route::get('/sair', 'NotificacaoController@beforeExit');
+Route::get('/logout', 'UsuarioController@sair');
