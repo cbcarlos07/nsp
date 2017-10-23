@@ -8,10 +8,14 @@ use App\Http\Requests;
 use Request;
 use Illuminate\Support\Facades\DB;
 use App\HamOcorrenciasAnvisa;
+use Illuminate\Support\Facades\Session;
 class NotificacaoController extends Controller
 {
     public function cadastro(){
-        return view('cadastro');
+        if( Session::has('usuario') )
+            return view('cadastro');
+        else
+            return redirect(  )->action( 'UsuarioController@login' );
     }
 
     public function busca(  ){
@@ -42,7 +46,10 @@ class NotificacaoController extends Controller
     }
 
     public function principal(){
-        return view('opcao');
+        if( Session::has('usuario' ) )
+            return view('opcao');
+        else
+            return redirect(  )->action( 'UsuarioController@login' );
     }
 
     public function cadNotivisa(){
@@ -89,7 +96,10 @@ class NotificacaoController extends Controller
     }
 
     public function relatorio(){
-        return view('relatorio');
+        if( Session::has('usuario' ) )
+            return view('relatorio');
+        else
+            return redirect(  )->action( 'UsuarioController@login' );
     }
 
     public function consulta(  ){
@@ -118,7 +128,11 @@ class NotificacaoController extends Controller
     }
 
     public function beforeExit(){
-        return view('sair');
+        if( Session::has('usuario' ) )
+            return view('sair');
+        else
+            return redirect(  )->action( 'UsuarioController@login' );
+
     }
 
 
