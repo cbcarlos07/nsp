@@ -1,14 +1,18 @@
 # nsp
-Sistema de Notificações do NSP
+##Sistema de Notificações do NSP
 
-Tela de Login:
+###Sistema desenvolvido em Laravel com php utilizando oracle
+
+
+###**Tela de Login:**
+
 ![alt text](https://github.com/cbcarlos07/nsp/blob/master/public/printnotif/Login.PNG)
 
-Tela Principal:
+###**Tela Principal:**
 ![alt text](https://github.com/cbcarlos07/nsp/blob/master/public/printnotif/principal.PNG)
 
-Tela Cadastro:
+###**Tela Cadastro:**
 ![alt text](https://github.com/cbcarlos07/nsp/blob/master/public/printnotif/cadastro.PNG)
 
-Tela Relatorio
+**Tela Relatorio**
 ![alt text](https://github.com/cbcarlos07/nsp/blob/master/public/printnotif/relatorio.PNG)
