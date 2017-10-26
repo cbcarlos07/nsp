@@ -45,7 +45,7 @@
         <b>Well done!</b> Save successfully!
         <button type="button" class="close"  aria-hidden="true" style="right: 0; top: -20px;"> &times;</button>
     </p>
-    <script src="{{ URL('theme/bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ URL('js//jquery.min.js') }}"></script>
     <script src="{{ URL('js/jquery.datetimepicker.full.js') }}"></script>
     <script>
         $("#inicio").datetimepicker({
@@ -108,7 +108,7 @@
                                      "   <td>"+ j.setor_registrante +"</td>"+
                                      "   <td>"+ j.setor_ocorrencia +"</td>"+
                                      "   <td>"+ j.registrante +"</td>"+
-                                     "   <td></td>"+
+                                     "   <td>"+ j.status +"</td>"+
                                      "   <td> <a href='#' onclick='abrirLink( "+ j.cod_registro +" )' data-id='"+j.cod_registro+"' title='Visualizar relat&oacute;rio'><i class='glyphicon glyphicon-search' style='text-align: center'></i></a></td>"+
                                      "</tr>";
                         } );

@@ -44,7 +44,7 @@
         <b>Well done!</b> Save successfully!
         <button type="button" class="close"  aria-hidden="true" style="right: 0; top: -20px;"> &times;</button>
     </p>
-    <script src="{{ URL('theme/bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ URL('js//jquery.min.js') }}"></script>
     <script>
         $(document).ready( function () {
             $('#codigo').focus();
@@ -126,13 +126,14 @@
                                     '    </div>'+
                                     ' </div>'+
                                     '</div>';
-                                    //console.log("Cd Notivisa: ", data[data.length -1]['notificacao']);
+                                   // console.log("Cd Notivisa: ", data[0][0]['cd_notivisa']);
+                                   // console.log("Cd Notivisa: ", data[0][0]['cd_ocorrencia_anvisa']);
                                     var cdNotivisa = "";
                                     var cdAnvisa = 0;
                                     try{
                                     //    console.log( "Cd Notivisa: ", data['notificacao'][0]['cd_notivisa'] );
-                                        cdNotivisa =  data['notificacao'][0]['cd_notivisa'];
-                                        cdAnvisa = data['notificacao'][0]['cd_ocorrencia_anvisa'];
+                                        cdNotivisa = data[0][0]['cd_notivisa'];
+                                        cdAnvisa = data[0][0]['cd_ocorrencia_anvisa'];
                                         campoAnvisa.val( cdAnvisa );
                                         campoNotivisa.val( cdNotivisa );
 
