@@ -41,7 +41,7 @@
             <div class="alert alert-danger">
                 <strong>Erro</strong>
                 @if( isset($pwd) )
-                    Verifique sua senha ou login
+                    {{ $pwd }}
                 @endif
                 <ul>
                     @foreach( $errors->all() as $error )

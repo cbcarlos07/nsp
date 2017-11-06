@@ -126,7 +126,17 @@ class NotificacaoController extends Controller
                       ,(SELECT CENTRO_CUSTO.DS_CENTRO_CUSTO FROM DBAPORTAL.CENTRO_CUSTO WHERE DBAPORTAL.CENTRO_CUSTO.CD_CENTRO_CUSTO = DBAPORTAL.REGISTRO_OCORRENCIA.CD_CENTRO_CUSTO_RELATOR)     SETOR_OCORRENCIA
                       ,(SELECT DS_PESSOA FROM DBAPORTAL.PESSOA WHERE DBAPORTAL.PESSOA.CD_PESSOA = DBAPORTAL.REGISTRO_OCORRENCIA.ID_USUARIO_REGISTRANTE) REGISTRANTE    
                       ,DBAPORTAL.FLUXO_OCORRENCIA.NM_FLUXO_OCORRENCIA STATUS      
-                      ,DBAPORTAL.HAM_OCORRENCIAS_ANVISA.CD_NOTIVISA                
+                      ,DBAPORTAL.HAM_OCORRENCIAS_ANVISA.CD_NOTIVISA
+                      ,CASE
+                         WHEN DBAPORTAL.TIPO_OCORRENCIA.CD_TIPO_OCORRENCIA = 71
+                           THEN 'Evento'
+                         WHEN DBAPORTAL.TIPO_OCORRENCIA.CD_TIPO_OCORRENCIA = 76
+                           THEN 'Near Miss'
+                         WHEN DBAPORTAL.TIPO_OCORRENCIA.CD_TIPO_OCORRENCIA = 69
+                           THEN 'Circunstância de Risco'
+                         WHEN DBAPORTAL.TIPO_OCORRENCIA.CD_TIPO_OCORRENCIA = 75
+                           THEN 'Normas relacionadas à Excelência em Servir'
+                       END TIPO_DE_OCORRENCIA                
                   FROM DBAPORTAL.REGISTRO_OCORRENCIA
                       ,DBAPORTAL.OCORRENCIA
                       ,DBAPORTAL.TIPO_OCORRENCIA      

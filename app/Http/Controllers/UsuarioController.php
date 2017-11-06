@@ -38,17 +38,24 @@ class UsuarioController extends Controller
 
 
 
-        $pass = "";
-        foreach( $pwd as $item ){
-            $pass = $item->senha;
-        }
+        $pass = $pwd[0]->senha;
+
+        $papel = DB::connection('oracle1')->select("SELECT * FROM DBAMV.V_QUALIDADE_PAPEL V WHERE V.USUARIO  = ?", array( $login ));
+
+        //var_dump( $papel );
 
         if( $senha == $pass ){
+
             Session::put('usuario', $login );
-            return redirect(  )->action( 'NotificacaoController@principal' );
+
+            if( sizeof( $papel ) > 0 ){
+                 return redirect(  )->action( 'NotificacaoController@principal' );
+            }else{
+                return view('/login')->with('pwd','Voc&ecirc; n&atilde;o tem permiss&atilde;o para acessar esse sistema');
+            }
 
         }else{
-            return view('/login')->with('pwd','0');
+            return view('/login')->with('pwd','Verifique sua senha ou login');
         }
 
 

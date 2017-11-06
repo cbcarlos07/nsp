@@ -83,17 +83,17 @@
                     lnk.text('Reiniciar pesquisa');
 
                     lnk.fadeIn();
-                    console.log("Length: "+data.length);
+                  //  console.log("Length: "+data.length);
                     if( data.length > 0 ){
 
 
                         var linha = "<table class='table table-hover table-striped'>" +
                                     "   <thead>" +
-                                    "     <th>#</th>"+
-                                    "     <th>Data da Ocorr&ecirc;ncia</th>"+
-                                    "     <th>Resumo</th>"+
+                                    "     <th title='C&oacute;digo da Ocorr&ecirc;ncia'>Notivisa</th>"+
                                     "     <th>Tipo de Ocorr&ecirc;ncia</th>"+
-                                    "     <th>Setor Solicitante</th>"+
+                                    "     <th>Resumo</th>"+
+                                    "     <th>Data da Ocorr&ecirc;ncia</th>"+
+                                    "     <th>Setor Registrante</th>"+
                                     "     <th>Setor de Ocorr&ecirc;ncia</th>"+
                                     "     <th>Registrante</th>"+
                                     "     <th>Status</th>"+
@@ -101,10 +101,10 @@
                                     "   </thead>";
                         $.each( data, function (i, j) {
                             linha += "<tr>" +
-                                     "   <td>"+ j.cod_registro +"</td>"+
-                                     "   <td>"+ j.data_ocorrencia +"</td>"+
-                                     "   <td>"+ j.resumo +"</td>"+
+                                     "   <td>"+ j.cd_notivisa +"</td>"+
                                      "   <td>"+ j.tipo_de_ocorrencia +"</td>"+
+                                     "   <td>"+ j.resumo +"</td>"+
+                                     "   <td>"+ j.data_ocorrencia +"</td>"+
                                      "   <td>"+ j.setor_registrante +"</td>"+
                                      "   <td>"+ j.setor_ocorrencia +"</td>"+
                                      "   <td>"+ j.registrante +"</td>"+
@@ -169,7 +169,7 @@
         $
 
         $('#inicio').on('change', function () {
-            console.log('inicio: '+$(this).val() );
+        //    console.log('inicio: '+$(this).val() );
             verificarCampos();
 
 
