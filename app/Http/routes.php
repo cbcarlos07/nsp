@@ -17,14 +17,18 @@ Route::get('/', function () {
 });
 
 Route::get('/', 'UsuarioController@login');
+Route::post('/logar', ['as'=> 'logar', 'uses' => 'UsuarioController@logar']);
+Route::group(['middleware' => 'nsp'], function (){
 
-Route::post('/logar', 'UsuarioController@logar');
-Route::get('/cadastro', 'NotificacaoController@cadastro');
-Route::post('/busca', 'NotificacaoController@busca');
-Route::get('/principal', 'NotificacaoController@principal');
-Route::post('/insert', 'NotificacaoController@cadNotivisa');
-Route::post('/update/', 'NotificacaoController@altNotivisa');
-Route::get('/relatorio', 'NotificacaoController@relatorio');
-Route::post('/consulta', 'NotificacaoController@consulta');
-Route::get('/sair', 'NotificacaoController@beforeExit');
-Route::get('/logout', 'UsuarioController@sair');
+
+    Route::get('/cadastro',[ 'as' => 'cadastro', 'uses' => 'NotificacaoController@cadastro' ] );
+    Route::post('/busca', ['as' => 'busca', 'uses' => 'NotificacaoController@busca']);
+    Route::get('/principal',['as' => 'principal' ,  'uses' => 'NotificacaoController@principal'] );
+    Route::post('/insert', ['as' => 'cadNotivisa', 'uses', 'NotificacaoController@cadNotivisa']);
+    Route::post('/update/', ['as' =>'altNotivisa', 'uses' => 'NotificacaoController@altNotivisa']);
+    Route::get('/relatorio', ['as' => 'relatorio', 'uses' => 'NotificacaoController@relatorio']);
+    Route::post('/consulta', ['as' => 'consulta','uses' => 'NotificacaoController@consulta']);
+    Route::get('/sair', ['as' => 'beforeExit', 'uses' => 'NotificacaoController@beforeExit']);
+    Route::get('/logout', ['as' => 'sair', 'uses' => 'UsuarioController@sair']);
+
+});

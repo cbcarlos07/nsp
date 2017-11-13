@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Session;
 class NotificacaoController extends Controller
 {
     public function cadastro(){
-        if( Session::has('usuario') )
+       // if( Session::has('usuario') )
             return view('cadastro');
-        else
-            return redirect(  )->action( 'UsuarioController@login' );
+        /*else
+            return redirect(  )->action( 'UsuarioController@login' );*/
     }
 
     public function busca(  ){
@@ -58,10 +58,10 @@ class NotificacaoController extends Controller
     }
 
     public function principal(){
-        if( Session::has('usuario' ) )
+        //if( Session::has('usuario' ) )
             return view('opcao');
-        else
-            return redirect(  )->action( 'UsuarioController@login' );
+        /*else
+            return redirect(  )->action( 'UsuarioController@login' );*/
     }
 
     public function cadNotivisa(){
@@ -159,10 +159,10 @@ class NotificacaoController extends Controller
     }
 
     public function beforeExit(){
-        if( Session::has('usuario' ) )
+        //if( Session::has('usuario' ) )
             return view('sair');
-        else
-            return redirect(  )->action( 'UsuarioController@login' );
+        /*else
+            return redirect(  )->action( 'UsuarioController@login' );*/
 
     }
 
