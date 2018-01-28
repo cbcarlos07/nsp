@@ -25,6 +25,7 @@
               <ul class="nav navbar-nav navbar-left">
                   <li><a href="{{ action('NotificacaoController@cadastro') }}">Cadastro</a></li>
                   <li><a href="{{ action('NotificacaoController@relatorio') }}">Relat&oacute;rio</a></li>
+                  <li><a href="{{ action('NotificacaoController@relatorio') }}">Gr&aacute;fico</a></li>
               </ul>
 
               <ul class="nav navbar-nav navbar-right">
